@@ -7,9 +7,9 @@ Made With Love From This Beautiful Developer
 
 you should put all this files in /home/${youruser}/.config/nvim
 
-todo: 
-Minimap
-debugger protocol
-autosave
-terminal management
-database client
+## TODO
+[ ] Minimap
+[ ] debugger protocol client
+[ ] autosave
+[ ] terminal management
+[ ] database client
