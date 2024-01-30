@@ -4,7 +4,7 @@ Our Configs for Nvim
 you should put all this files in /home/${youruser}/.config/nvim
 also if you have previously installed nvim you should remove your cache too :
 `rm -r ~/.local/share/nvim` <br>
-`rm -r ~/.cache/nvim`
+`rm -r ~/.cache/nvim` <br>
 also you would probably need a nerd font so that the icons of nvim tree works, you can go and get it form https://www.nerdfonts.com/ and install it with this: https://www.debugpoint.com/install-fonts-linux/
 
 ## TODO
