@@ -1,5 +1,7 @@
+require("nvim-treesitter.install").prefer_git = true;
+
 local options = {
-  ensure_installed = { "lua" },
+  ensure_installed = { "lua","typescript","javascript","vimdoc","vim" },
 
   highlight = {
     enable = true,
