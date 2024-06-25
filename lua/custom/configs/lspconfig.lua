@@ -1,8 +1,26 @@
 local config = require("plugins.configs.lspconfig")
-local on_attach = config.on_attach
-local capabilites = config.capabilities
+local on_attach = require("plugins.configs.lspconfig").on_attach
+local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require("lspconfig")
+local util = require "lspconfig/util"
+
+lspconfig.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {"gopls"},
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      },
+    },
+  },
+}
 
 local function organize_imports()
   local params = {
@@ -11,25 +29,6 @@ local function organize_imports()
   }
   vim.lsp.buf.execute_command(params)
 end
-
--- dynamic_debug.lua
-local function debug_dynamic()
-    -- Prompt the user to enter the UUID
-    local uuid = vim.fn.input('Enter UUID: ')
-
-    -- Construct the WebSocket URL with the entered UUID
-    local ws_url = 'ws://localhost:9229/' .. uuid
-
-    -- Attach to the debug session with the dynamic WebSocket URL
-    require('dap').run({
-        type = "pwa-node",
-        request = "attach",
-        name = "Attach",
-        cwd = "${workspaceFolder}",
-        url = ws_url
-    })
-end
-
 
 lspconfig.tsserver.setup{
   on_attach = on_attach,
@@ -43,10 +42,6 @@ lspconfig.tsserver.setup{
     OrganizeImports = {
       organize_imports,
       description = "Organize Imports"
-    },
-    DebugDynamic = {
-      debug_dynamic,
-      description = 'dynamic debug'
     }
   }
 }
