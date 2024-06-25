@@ -45,7 +45,6 @@ local plugins = {
       ensure_installed = {
         "eslint-lsp",
         "prettier",
-        "js-debug-adapter",
         "typescript-language-server"
       }
     }
