@@ -32,7 +32,7 @@ end
 
 lspconfig.tsserver.setup{
   on_attach = on_attach,
-  capabilites = capabilites,
+  capabilites = capabilities,
   init_options = {
     preferences = {
       disableSuggestions = false
